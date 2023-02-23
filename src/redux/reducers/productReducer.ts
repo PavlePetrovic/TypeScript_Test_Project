@@ -1,27 +1,16 @@
 import { ActionTypes } from "../enums/action-types";
-
-interface stateType {
-   products: {
-      id: number,
-      title: string,
-      price: number,
-      description: string,
-      category: string,
-      image: string,
-      rating?: {}
-   }[]
-}
+import { initialStateType, reducerActionType } from "../interfaces/interfaces";
 
 interface actionType {
    type: string,
    peyload: []
 }
 
-const initialState: stateType = {
+const initialState: initialStateType = {
    products: [] 
 }
 
-export const productReducer = (state = initialState, { type, peyload }: actionType) => {
+export const productReducer = (state = initialState, { type, peyload }: reducerActionType) => {
    switch (type) {
       case ActionTypes.SET_PRODUCTS:
          
@@ -31,7 +20,7 @@ export const productReducer = (state = initialState, { type, peyload }: actionTy
    }
 }
 
-export const selectedProductReducer = (state = initialState, {type, peyload}: actionType) => {
+export const selectedProductReducer = (state = initialState, {type, peyload}: reducerActionType) => {
    switch (type) {
       case ActionTypes.SELECTED_PRODUCT:
          return {...state, ...peyload}
