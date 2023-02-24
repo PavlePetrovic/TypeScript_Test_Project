@@ -1,21 +1,21 @@
 import { ActionTypes } from "../enums/action-types";
-import { productsType, productType } from "../interfaces/interfaces";
+import { productTypeObj } from "../interfaces/interfaces";
 
-export const setProducts = (products: productsType) => {
+export const setProducts = (products: productTypeObj[]) => {
    return {
       type: ActionTypes.SET_PRODUCTS,
       peyload: products
    }
 }
 
-export const selectedProduct = (product: productType) => {
+export const selectedProduct = (product: productTypeObj) => {
    return {
       type: ActionTypes.SELECTED_PRODUCT,
       peyload: product
    }
 }
 
-export const removeSelectedProduct = (): {type: string} => {
+export const removeSelectedProduct = () => {
    return {
       type: ActionTypes.REMOVE_SELECTED_PRODUCT
    }

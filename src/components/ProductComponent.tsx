@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux'
-// First, you must install npm install --save @types/react-redux, then:
-import { RootState } from '../redux/store'
+import { useAppSelector } from '../redux/hooks/hooks'
 import { Link } from 'react-router-dom'
+import { productTypeObj } from '../redux/interfaces/interfaces'
 
 const ProductComponent = () => {
-   const products = useSelector((state: RootState) => state.allProducts.products)
-   const renderList = products.map((product: { id: number; title: string; image: string; price: number; category: string }) => {
+   const products = useAppSelector(state => state.allProducts.products)
+   const renderList = products.map((product: productTypeObj) => {
    
       const {id, title, image, price, category} = product
 

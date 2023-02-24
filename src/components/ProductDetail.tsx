@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { selectedProduct, removeSelectedProduct } from '../redux/actions/productActions';
-import { RootState } from '../redux/store'
+import { useAppDispatch, useAppSelector } from '../redux/hooks/hooks';
+
+import axios from 'axios';
+import { productTypeObj } from '../redux/interfaces/interfaces';
 
 
 const ProductDetail = () => {
   const { productId } = useParams()
-  let product = useSelector((state: RootState) => state.product)
+  let product: productTypeObj = useAppSelector(state => state.product)
   const { image, title, price, category, description } = product
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   
   const fetchProductDetail = async (id: string) => {
     const response: any = await axios
@@ -19,12 +19,12 @@ const ProductDetail = () => {
       .catch(err => {
         console.log(err);
       })
-
       dispatch(selectedProduct(response.data))
   }
 
   useEffect(() => {
     if (productId && productId !== '') fetchProductDetail(productId)
+    // Clean up
     return () => {
       dispatch(removeSelectedProduct())
     }
