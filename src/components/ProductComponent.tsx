@@ -1,6 +1,7 @@
 import { useAppSelector } from '../redux/hooks/hooks'
 import { Link } from 'react-router-dom'
 import { productTypeObj } from '../redux/interfaces/interfaces'
+import { FaReact } from 'react-icons/fa';
 
 import './ProductComponent.css'
 
@@ -29,6 +30,11 @@ const ProductComponent = () => {
 
    return (
       <>
+         {products.length === 0 && 
+            <div className='flex justify-center h-screen -mt-28 items-center'>
+               <span className='animate-spin text-blue-500 text-7xl'><FaReact /></span>
+            </div>
+         }
          {renderList}
       </>
    )

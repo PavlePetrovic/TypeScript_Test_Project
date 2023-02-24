@@ -7,7 +7,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className="App bg-blue-100">
+    <div>
       <Router>
         <Header />   
         <Routes>
