@@ -3,7 +3,7 @@ import axios from "axios";
 import { setProducts } from '../redux/actions/productActions'
 import ProductComponent from './ProductComponent';
 import { useAppDispatch } from '../redux/hooks/hooks';
-import { productTypeObj } from '../redux/interfaces/interfaces'
+import { productTypeObj } from '../redux/types/interfaces'
 
 import './ProductListing.css'
 
@@ -12,29 +12,29 @@ type test = {
 }
 
 const ProductListing = () => {
-   const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-   const fetchProducts = async () => {
-      const response: any = await axios
-        .get<test>('https://fakestoreapi.com/products')
-        .catch(err => {
-          console.log(`Error: ${err}`);
-        })
+  const fetchProducts = async () => {
+    const response: any = await axios
+      .get<test>('https://fakestoreapi.com/products')
+      .catch(err => {
+        console.log(`Error: ${err}`);
+      })
 
-      // const test: productTypeObj[] = response.data
-        
-      dispatch(setProducts(response.data))
-    }
-  
-    useEffect(() => {
-      fetchProducts()
-    }, [])
+    // const test: productTypeObj[] = response.data
 
-   return (
-      <div className='container flex flex-wrap justify-center gap-6 mx-auto mt-10 pb-16 lg:gap-12 xl:gap-6'>
-        <ProductComponent />
-      </div>
-   )
+    dispatch(setProducts(response.data))
+  }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  return (
+    <div className='container flex flex-wrap justify-center gap-6 mx-auto mt-10 pb-16 lg:gap-12 xl:gap-6'>
+      <ProductComponent />
+    </div>
+  )
 }
 
 export default ProductListing

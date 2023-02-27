@@ -1,4 +1,4 @@
-export interface initialStateType {
+export type initialStateType = {
    products: {
       id: number,
       title: string,
@@ -10,7 +10,7 @@ export interface initialStateType {
    }[]
 }
 
-export interface productTypeObj { 
+export type productTypeObj = { 
    id: number,
    title: string,
    image: string,
