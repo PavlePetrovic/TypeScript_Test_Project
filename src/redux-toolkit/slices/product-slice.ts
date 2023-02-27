@@ -1,6 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 import { productTypeObj } from '../types/types'
+
+export const getProduct: any = createAsyncThunk(
+   'product/getProduct',
+   async (id) => {
+      const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
+      return response.data
+   }
+)
 
 const initialState: productTypeObj = {
    id: 0,
@@ -14,16 +23,26 @@ const product = createSlice({
    name: 'product',
    initialState,
    reducers: {
-      selectedProduct(state, { payload }: any) {
+      removeSelectedProduct: () => initialState
+   },
+   extraReducers: (builder) => {
+      // pending, fulfiled, rejected
+      builder.addCase(getProduct.pending, (state) => {
+         state.isLoading = true
+      }),
+      builder.addCase(getProduct.fulfilled, (state, {payload}: any) => {
          return {
             ...state,
-            ...payload
+            ...payload,
+            isLoading: false
          }
-      },
-      removeSelectedProduct: () => initialState
+      }),
+      builder.addCase(getProduct.rejected, (state) => {
+         state.isLoading = false
+      })
    }
 })
 
-export const { selectedProduct, removeSelectedProduct } = product.actions
+export const { removeSelectedProduct } = product.actions
 
 export default product.reducer

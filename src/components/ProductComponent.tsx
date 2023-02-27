@@ -7,8 +7,9 @@ import './ProductComponent.css'
 
 const ProductComponent = () => {
    const products = useAppSelector(state => state.allProducts.products)
-   const renderList = products.map((product: productTypeObj) => {
+   const loading = useAppSelector(state => state.allProducts.isLoading)
 
+   const renderList = products.map((product: productTypeObj) => {
       const { id, title, image, price, category } = product
 
       return (
@@ -30,12 +31,12 @@ const ProductComponent = () => {
 
    return (
       <>
-         {products.length === 0 &&
+         {loading &&
             <div className='flex justify-center h-screen -mt-28 items-center'>
                <span className='animate-spin text-blue-500 text-7xl'><FaReact /></span>
             </div>
          }
-         {renderList}
+         {!loading && renderList}
       </>
    )
 }

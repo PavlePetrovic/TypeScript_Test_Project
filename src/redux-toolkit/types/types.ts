@@ -7,7 +7,8 @@ export type initialStateType = {
       category: string,
       image: string,
       rating?: {}
-   }[]
+   }[],
+   isLoading: boolean
 }
 
 export type productTypeObj = { 
@@ -16,5 +17,6 @@ export type productTypeObj = {
    image: string,
    price: number,
    category: string,
-   description?: string
+   description?: string,
+   isLoading?: boolean
 }

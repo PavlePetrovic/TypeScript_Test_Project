@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { selectedProduct, removeSelectedProduct } from '../redux-toolkit/slices/product-slice'
+import { removeSelectedProduct } from '../redux-toolkit/slices/product-slice'
+import { getProduct } from '../redux-toolkit/slices/product-slice';
 import { useAppDispatch, useAppSelector } from '../redux-toolkit/hooks/hooks';
 import { FaReact } from 'react-icons/fa';
 import { VscChromeClose } from 'react-icons/vsc'
-
-import axios from 'axios';
 import { productTypeObj } from '../redux-toolkit/types/types';
 import './ProductDetail.css'
 
@@ -13,20 +12,11 @@ import './ProductDetail.css'
 const ProductDetail = () => {
   const { productId } = useParams()
   let product: productTypeObj = useAppSelector(state => state.product)
-  const { image, title, price, category, description } = product
+  const { image, title, price, category, description, isLoading } = product
   const dispatch = useAppDispatch()
 
-  const fetchProductDetail = async (id: string) => {
-    const response: any = await axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .catch(err => {
-        console.log(err);
-      })
-    dispatch(selectedProduct(response.data))
-  }
-
   useEffect(() => {
-    if (productId && productId !== '') fetchProductDetail(productId)
+    dispatch(getProduct(productId))
     // Clean up
     return () => {
       dispatch(removeSelectedProduct())
@@ -35,7 +25,7 @@ const ProductDetail = () => {
 
   return (
     <div className='container flex mx-auto mt-9 mb-10 justify-center'>
-      {product.title === '' ? (
+      {isLoading ? (
         <div className='flex justify-center h-screen -mt-28 items-center'>
           <span className='animate-spin text-blue-500 text-7xl'><FaReact /></span>
         </div>
