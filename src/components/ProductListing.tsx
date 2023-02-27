@@ -1,28 +1,20 @@
 import { useEffect } from 'react'
 import axios from "axios";
-import { setProducts } from '../redux/actions/productActions'
+import { setProducts } from '../redux-toolkit/allProducts-slice';
 import ProductComponent from './ProductComponent';
-import { useAppDispatch } from '../redux/hooks/hooks';
-import { productTypeObj } from '../redux/types/types'
+import { useAppDispatch } from '../redux-toolkit/hooks/hooks';
 
 import './ProductListing.css'
-
-type test = {
-  data: productTypeObj[]
-}
 
 const ProductListing = () => {
   const dispatch = useAppDispatch()
 
   const fetchProducts = async () => {
     const response: any = await axios
-      .get<test>('https://fakestoreapi.com/products')
+      .get('https://fakestoreapi.com/products')
       .catch(err => {
         console.log(`Error: ${err}`);
       })
-
-    // const test: productTypeObj[] = response.data
-
     dispatch(setProducts(response.data))
   }
 
