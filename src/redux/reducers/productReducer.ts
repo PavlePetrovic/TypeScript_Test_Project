@@ -1,5 +1,5 @@
 import { ActionTypes } from "../enums/action-types";
-import { initialStateType } from "../types/interfaces";
+import { initialStateType } from "../types/types";
 
 const initialState: initialStateType = {
    products: []

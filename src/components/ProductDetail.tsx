@@ -6,7 +6,7 @@ import { FaReact } from 'react-icons/fa';
 import { VscChromeClose } from 'react-icons/vsc'
 
 import axios from 'axios';
-import { productTypeObj } from '../redux/types/interfaces';
+import { productTypeObj } from '../redux/types/types';
 import './ProductDetail.css'
 
 

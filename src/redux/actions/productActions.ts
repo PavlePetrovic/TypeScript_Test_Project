@@ -1,5 +1,5 @@
 import { ActionTypes } from "../enums/action-types";
-import { productTypeObj } from "../types/interfaces";
+import { productTypeObj } from "../types/types";
 
 export const setProducts = (products: productTypeObj[]) => {
    return {

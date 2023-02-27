@@ -3,7 +3,7 @@ import axios from "axios";
 import { setProducts } from '../redux/actions/productActions'
 import ProductComponent from './ProductComponent';
 import { useAppDispatch } from '../redux/hooks/hooks';
-import { productTypeObj } from '../redux/types/interfaces'
+import { productTypeObj } from '../redux/types/types'
 
 import './ProductListing.css'
 

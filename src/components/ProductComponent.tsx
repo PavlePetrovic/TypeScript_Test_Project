@@ -1,6 +1,6 @@
 import { useAppSelector } from '../redux/hooks/hooks'
 import { Link } from 'react-router-dom'
-import { productTypeObj } from '../redux/types/interfaces'
+import { productTypeObj } from '../redux/types/types'
 import { FaReact } from 'react-icons/fa';
 
 import './ProductComponent.css'
