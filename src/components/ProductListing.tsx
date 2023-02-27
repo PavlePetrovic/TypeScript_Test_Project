@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import axios from "axios";
-import { setProducts } from '../redux-toolkit/allProducts-slice';
+import { setProducts } from '../redux-toolkit/slices/allProducts-slice';
 import ProductComponent from './ProductComponent';
 import { useAppDispatch } from '../redux-toolkit/hooks/hooks';
 

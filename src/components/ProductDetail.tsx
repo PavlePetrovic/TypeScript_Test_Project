@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
-import { selectedProduct, removeSelectedProduct } from '../redux-toolkit/product-slice'
+import { selectedProduct, removeSelectedProduct } from '../redux-toolkit/slices/product-slice'
 import { useAppDispatch, useAppSelector } from '../redux-toolkit/hooks/hooks';
 import { FaReact } from 'react-icons/fa';
 import { VscChromeClose } from 'react-icons/vsc'

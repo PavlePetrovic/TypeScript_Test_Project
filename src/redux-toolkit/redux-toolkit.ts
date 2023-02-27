@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import allProductsReducer from './allProducts-slice'
-import productReducer from "./product-slice";
+import allProductsReducer from './slices/allProducts-slice'
+import productReducer from "./slices/product-slice";
 
 // First, you must install npm install --save @types/react-redux, then:
 // type declaration for useSelector(state: RootState => ...)
