@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 import { initialStateType } from '../types/types'
@@ -6,7 +7,7 @@ import { initialStateType } from '../types/types'
 export const getProducts: any = createAsyncThunk(
    'allProducts/getProducts',
    async () => {
-      const response: any = await axios.get('https://fakestoreapi.com/products')
+      const response = await axios.get('https://fakestoreapi.com/products')
       return response.data
    }
 )
@@ -25,10 +26,10 @@ const allProducts = createSlice({
       builder.addCase(getProducts.pending, (state) => {
          state.isLoading = true
       }),
-      builder.addCase(getProducts.fulfilled, (state, {payload}: any) => {
+      builder.addCase(getProducts.fulfilled, (state, actions: PayloadAction<[]>) => {
          return {
             ...state,
-            products: payload,
+            products: actions.payload,
             isLoading: false
          }
       }),
