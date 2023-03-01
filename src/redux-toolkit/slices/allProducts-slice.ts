@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { initialStateType } from '../types/types'
 
-export const getProducts: any = createAsyncThunk(
+export const getProducts = createAsyncThunk(
    'allProducts/getProducts',
    async () => {
       const response = await axios.get('https://fakestoreapi.com/products')

@@ -3,7 +3,7 @@ import axios from 'axios'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { productTypeObj } from '../types/types'
 
-export const getProduct: any = createAsyncThunk(
+export const getProduct = createAsyncThunk(
    'product/getProduct',
    async (id: string) => {
       const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
